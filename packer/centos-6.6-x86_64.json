@@ -5,7 +5,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-6.6/ks.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40960,
+      "disk_size": 20480,
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
@@ -24,13 +24,13 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "480"
+          "1024"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "2"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
@@ -41,7 +41,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-6.6/ks.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40960,
+      "disk_size": 20480,
       "guest_os_type": "centos-64",
       "http_directory": "http",
       "iso_checksum": "08be09fd7276822bd3468af8f96198279ffc41f0",
@@ -58,8 +58,8 @@
       "vm_name": "packer-centos-6.6-x86_64",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
-        "memsize": "480",
-        "numvcpus": "1"
+        "memsize": "1024",
+        "numvcpus": "2"
       }
     }
   ],
@@ -75,6 +75,7 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": [
         "scripts/centos/fix-slow-dns.sh",
+        "scripts/centos/update.sh",
         "scripts/common/sshd.sh",
         "scripts/common/vagrant.sh",
         "scripts/common/vmtools.sh"
