@@ -6,3 +6,5 @@ virtualfloppy.vfd
 packer_cache
 packer.log
 .DS_Store
+berks-cookbooks/
+Berksfile.lock
