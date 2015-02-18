@@ -1,5 +1,6 @@
 #!/bin/bash
 
+berks update
 berks vendor
 
 cd packer
